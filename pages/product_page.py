@@ -9,10 +9,13 @@ class ProductPage(BasePage):
         self.should_be_correct_name()
         self.should_be_correct_price()
 
-    def should_be_successful_added(self):
+    def should_be_clicked_addtocart_button(self):
         button = self.browser.find_element(
             *ProductPageLocators.ADDTOCART_BUTTON)
         button.click()
+
+    def should_be_successful_added(self):
+        self.should_be_clicked_addtocart_button()
         self.solve_quiz_and_get_code()
         assert self.is_element_present(
             *ProductPageLocators.SUCCESS_INFO
@@ -36,3 +39,11 @@ class ProductPage(BasePage):
         info = self.browser.find_element(
             *ProductPageLocators.INFO_PRICE).text
         assert price == info, "Another product was displayed"
+
+    def cant_see_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_INFO), \
+            "Success info was presented"
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_INFO), \
+            "The success message didn't disappear"
