@@ -17,3 +17,8 @@ class ProductPageLocators:
     INFO_NAME = (By.CSS_SELECTOR, "div.alert-success strong")
     PRICE = (By.CSS_SELECTOR, "p.price_color")
     INFO_PRICE = (By.CSS_SELECTOR, "div.alert-info strong")
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
